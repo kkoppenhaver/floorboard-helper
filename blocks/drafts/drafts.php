@@ -15,8 +15,9 @@ $drafts_query = new WP_Query([
 ?>
 
 <div class="post-drafts">
+    <h3>Coming soon to the blog</h3>
     <?php foreach( $drafts_query->posts as $draft_post ) : ?>
-        <h3><?php echo get_the_title( $draft_post ); ?></h3>
+        <h4><?php echo get_the_title( $draft_post ); ?></h4>
     <?php endforeach; ?>
 </div>
 
