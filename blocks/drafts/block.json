@@ -1,0 +1,16 @@
+{
+    "name": "floorboard/drafts",
+    "title": "Drafts",
+    "description": "Shows 3 draft posts to give readers a preview of what will be published soon.",
+    "style": [ "file:./drafts.css" ],
+    "category": "text",
+    "icon": "format-status",
+    "keywords": ["drafts", "draft", "floorboard"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "drafts.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}
