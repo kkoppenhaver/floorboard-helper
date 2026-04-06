@@ -3,7 +3,7 @@
  * Plugin Name:       Floorboard Helper
  * Plugin URI:        https://floorboardai.com/
  * Description:       A collection of helpers to run FloorboardAI.com
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Keanan Koppenhaver
@@ -22,12 +22,8 @@ function register_floorboard_acf_blocks() {
 /**
  * MCP Abilities for content management via Claude Code.
  */
-add_action( 'init', 'floorboard_register_mcp_abilities' );
-function floorboard_register_mcp_abilities() {
-    if ( ! function_exists( 'wp_register_ability' ) ) {
-        return;
-    }
-
+add_action( 'wp_abilities_api_categories_init', 'floorboard_register_mcp_category' );
+function floorboard_register_mcp_category() {
     wp_register_ability_category(
         'floorboard',
         array(
@@ -35,6 +31,10 @@ function floorboard_register_mcp_abilities() {
             'description' => 'Content management abilities for FloorboardAI',
         )
     );
+}
+
+add_action( 'wp_abilities_api_init', 'floorboard_register_mcp_abilities' );
+function floorboard_register_mcp_abilities() {
 
     // Get Posts
     wp_register_ability(
@@ -77,6 +77,7 @@ function floorboard_register_mcp_abilities() {
             },
             'execute_callback' => 'floorboard_mcp_get_posts',
             'meta' => array(
+                'show_in_rest' => true,
                 'mcp' => array( 'public' => true ),
                 'annotations' => array(
                     'readonly'    => true,
@@ -140,6 +141,7 @@ function floorboard_register_mcp_abilities() {
             },
             'execute_callback' => 'floorboard_mcp_create_draft',
             'meta' => array(
+                'show_in_rest' => true,
                 'mcp' => array( 'public' => true ),
                 'annotations' => array(
                     'readonly'    => false,
@@ -195,6 +197,7 @@ function floorboard_register_mcp_abilities() {
             },
             'execute_callback' => 'floorboard_mcp_update_post',
             'meta' => array(
+                'show_in_rest' => true,
                 'mcp' => array( 'public' => true ),
                 'annotations' => array(
                     'readonly'    => false,
