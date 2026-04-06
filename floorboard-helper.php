@@ -3,7 +3,7 @@
  * Plugin Name:       Floorboard Helper
  * Plugin URI:        https://floorboardai.com/
  * Description:       A collection of helpers to run FloorboardAI.com
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Keanan Koppenhaver
